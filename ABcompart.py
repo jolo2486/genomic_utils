@@ -132,7 +132,7 @@ except KeyError as ke:
 else:
     A_comp = [i for i, v in enumerate(pc) if v > 0]
     B_comp = [i for i, v in enumerate(pc) if v < 0]
-    fields = ['A, B']
+    fields = ['A,B']
     records = [f'{a},{b}' for a, b in zip(A_comp, B_comp)]
     if args.outFile:
         with open(args.outFile, 'w') as f:
