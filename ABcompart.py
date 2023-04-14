@@ -6,9 +6,6 @@ import cooltools
 import bioframe
 import pandas as pd
 import warnings
-import csv
-import re
-from xml.etree import ElementTree as ET
 
 def file_path(string):
     if os.path.exists(string):

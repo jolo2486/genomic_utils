@@ -69,3 +69,36 @@ optional arguments:
 - cooler: `pip install cooler`
 - cooltools: `pip install cooltools`
 - bioframe: `pip install bioframe`
+
+## colorgroups
+```
+usage: colorcmm [-h] -g GROUPDATA -c COLORS [-out OUTFILE]
+
+A little helper script to color groups. Creates (or prints to std.out) a csv
+file of rgb values given a csv file with fields of group names A,B,C,... and
+records of bin ids, as well as a csv file of group colors with fields of the
+same group names A,B,C,... but three records red, green, blue with
+corresponding values for each group. The output file will have as many records
+as the maximum index found in the groups file. If any indices are left out of
+the groups, they will be colored white (1,1,1). The indices in the out file
+will hence correspond to bin ids.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -g GROUPDATA, --groupData GROUPDATA
+                        Path to a csv file with the groups.
+  -c COLORS, --colors COLORS
+                        Path to the csv color file.
+  -out OUTFILE, --outFile OUTFILE
+                        Path to the output rgb csv file (optional).
+```
+### Usage
+`./colorgroups.py -g example_groups.csv -c example_colors.csv -out example_rgbout.csv` will produce a .csv file example_rgbout.csv with fields 'r,g,b', and records consisting values e.g. '0.1,0.2,0.3'.
+
+`./colorgroups.py -g testgroups.csv -c testcolors.csv -out testout.csv` will print the contents described above to std.out.
+
+Please refer to the example files for the proper file formatting.
+
+### Requirements
+- pandas: `pip install pandas`
+- numpy: `pip install numpy`
