@@ -23,5 +23,6 @@ optional arguments:
 
 ### Usage
 `./colorcmm.py -in <path> -out <path> -rgb <path>` will produce a new .cmm file with the markers updated with the new rgb values specified in the rgb file.
+
 `./colorcmm.py -in <path> -rgb <path>` will print the contents of the updated cmm file to std.out.
 
