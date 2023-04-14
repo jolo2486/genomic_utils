@@ -19,7 +19,16 @@ def file_path(string):
 parser = argparse.ArgumentParser(
     prog='ABcompartmentalize',
     description="""
-                Add description.
+                This script uses Cooltools and Bioframe to perform eigendecomposition on
+                the Hi-C matrix of a specific resolution (binsize) from a multiresolution
+                .mcool file. Returns a csv list of A, B compartments according to the
+                specified eigenvector. It will align the eigenvector using GC content as
+                a phasing track. For this a reference genome fasta file such as hg38.fa
+                is required. This can be obtained by e.g.
+
+                wget -P ./data/ https://hgdownload.cse.ucsc.edu/goldenpath/hg38/bigZips/hg38.fa.gz
+
+                If -chr is not specified, it will default to "chr1, chr2, ..., chrX, chrY".
                 """
 )
 # arguments
@@ -69,7 +78,7 @@ parser.add_argument(
     help="""
         Which eigenvector to use for compartmentalization.
         """,
-    default=2,
+    default=1,
     required=False
 )
 parser.add_argument(
