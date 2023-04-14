@@ -4,7 +4,8 @@ Small but growing collection of utilities for various tasks related to computati
 # Scripts
 
 ## colorcmm
-###--help
+### '--help'
+```
 Simple script to color the markers in a Chimera .cmm file according to a csv file of rgb values. The csv file should have
 the format of three fields named "r,g,b" in that order and each record consist of the corresponding values, e.g. "0.1,
 0.2, 0.3". The record index should directly correspond to the marker id that is to be colored.
@@ -18,6 +19,7 @@ optional arguments:
   -rgb RGBFILE, --rgbFile RGBFILE
                         Path and name of a .csv file with only three fields named r,g,b and values where the row number
                         corresponds with the marker id.
+```
 
 ### Usage
 `./colorcmm.py -in <path> -out <path> -rgb <path>` will produce a new .cmm file with the markers updated with the new rgb values specified in the rgb file.
