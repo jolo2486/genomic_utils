@@ -44,7 +44,7 @@ parser.add_argument(
 parser.add_argument(
     '-out',
     '--outFile',
-    type=file_path,
+    type=str,
     help='Path to the output file (optional).',
     nargs='?', # the nr of times the arg can be used (? makes it optional)
     default=None,
