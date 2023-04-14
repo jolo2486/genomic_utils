@@ -26,3 +26,38 @@ optional arguments:
 
 `./colorcmm.py -in <path> -rgb <path>` will print the contents of the updated cmm file to std.out.
 
+## ABcompart
+```
+usage: ABcompartmentalize [-h] -clr CLRFILE -bz BINSIZE [-chr CHROMS] -refg REFGENOMEFILE [-neigs NEIGS]
+                          [-eig EIGENVECTOR] [-out OUTFILE]
+
+This script uses Cooltools and Bioframe to perform eigendecomposition on the Hi-C matrix of a specific resolution
+(binsize) from a multiresolution .mcool file. Returns a csv list of A, B compartments according to the specified
+eigenvector. It will align the eigenvector using GC content as a phasing track. For this a reference genome fasta file
+such as hg38.fa is required. This can be obtained by e.g.
+
+wget -P https://hgdownload.cse.ucsc.edu/goldenpath/hg38/bigZips/hg38.fa.gz
+
+If -chr is not specified, it will default to "chr1, chr2, ..., chrX, chrY".
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -clr CLRFILE, --clrFile CLRFILE
+                        Path to the cooler multiresolution .mcool file
+  -bz BINSIZE, --binsize BINSIZE
+                        Resolution to use. (Must be available in the .mcool file.)
+  -chr CHROMS, --chroms CHROMS
+                        Comma separated list of available chromosome names, e.g. "chr1, chr2, ..., chrY" (optional)
+  -refg REFGENOMEFILE, --refGenomeFile REFGENOMEFILE
+                        Path to the reference genome fasta file, e.g. hg38.fa
+  -neigs NEIGS, --neigs NEIGS
+                        Number of eigenvectors to compute.
+  -eig EIGENVECTOR, --eigenvector EIGENVECTOR
+                        Which eigenvector to use for compartmentalization.
+  -out OUTFILE, --outFile OUTFILE
+                        Path to a csv file to store A, B compartmentalization. (optional)
+```
+### Usage
+`./ABcompart.py -clr coolfile.mcool -bz 160000 -refg 'hg38.fa' -neigs 2 -eig 1 -out abcompartments.csv` will produce a .csv file with two fields named 'A' and 'B', and records consisting of pairs of bin id:s.
+
+`./ABcompart.py -clr coolfile.mcool -bz 160000 -refg 'hg38.fa' -neigs 2 -eig 1` will print the contents described above to std.out.
