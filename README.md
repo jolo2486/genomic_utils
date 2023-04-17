@@ -23,7 +23,7 @@ optional arguments:
                         corresponds with the marker id.
 ```
 
-### Usage
+### Example Usage
 `./colorcmm.py -in <path> -out <path> -rgb <path>` will produce a new .cmm file with the markers updated with the new rgb values specified in the rgb file.
 
 `./colorcmm.py -in <path> -rgb <path>` will print the contents of the updated cmm file to std.out.
@@ -59,7 +59,7 @@ optional arguments:
   -out OUTFILE, --outFile OUTFILE
                         Path to a csv file to store A, B compartmentalization. (optional)
 ```
-### Usage
+### Example Usage
 `./ABcompart.py -clr coolfile.mcool -bz 160000 -refg 'hg38.fa' -neigs 2 -eig 1 -out abcompartments.csv` will produce a .csv file with two fields named 'A' and 'B', and records consisting of pairs of bin id:s.
 
 `./ABcompart.py -clr coolfile.mcool -bz 160000 -refg 'hg38.fa' -neigs 2 -eig 1` will print the contents described above to std.out.
@@ -92,7 +92,7 @@ optional arguments:
   -out OUTFILE, --outFile OUTFILE
                         Path to the output rgb csv file (optional).
 ```
-### Usage
+### Example Usage
 `./colorgroups.py -g example_groups.csv -c example_colors.csv -out example_rgbout.csv` will produce a .csv file example_rgbout.csv with fields 'r,g,b', and records consisting values e.g. '0.1,0.2,0.3'.
 
 `./colorgroups.py -g testgroups.csv -c testcolors.csv -out testout.csv` will print the contents described above to std.out.
