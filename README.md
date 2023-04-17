@@ -130,15 +130,18 @@ the [matplotlib colormap](https://matplotlib.org/stable/gallery/color/colormap_r
 
 `./colortrack.py -in example_track.csv -cmap 'autumn'` will print the contents described above to std.out.
 
-`echo '1,2,3,4,5' | ./colortrack.py -cmap 'autumn'`
-`> r,g,b
+`echo '1,2,3,4,5' | ./colortrack.py -cmap 'autumn'` would output:
+
+```
+r,g,b
 1.0,0.0,0.0
 1.0,0.2,0.0
 1.0,0.4,0.0
 1.0,0.6,0.0
 1.0,0.8,0.0
 1.0,1.0,0.0
-1.0,1.0,0.0`
+1.0,1.0,0.0
+```
 
 ```
 ### Requirements
