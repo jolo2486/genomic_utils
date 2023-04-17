@@ -102,3 +102,45 @@ Please refer to the example files for the proper file formatting.
 ### Requirements
 - pandas: `pip install pandas`
 - numpy: `pip install numpy`
+
+## colortrack
+```
+usage: colortrack [-h] [-in INFILE] [-out [OUTFILE]] -cmap CMAP
+
+Helper function to take a list of floats and a matplotlib cmap and create or
+print a csv file of rgb-values. This can then be used in conjunction with
+colorcmm to color a Chimera file according to a track such as GC-percentage or
+GPSeq score. The list should either be provided as comma separated
+'1,2,3,4,...' or just as one value per line.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -in INFILE, --inFile INFILE
+                        Path to the csv format track to color by, e.g. GC or
+                        GPSeq score track. Exclude to read from stdin.
+  -out [OUTFILE], --outFile [OUTFILE]
+                        Path to the output file (optional). Exclude to write
+                        to stdout
+  -cmap CMAP, --cmap CMAP
+                        Name of the matplotlib color map.
+```
+### Example Usage
+`./colortrack.py -in example_track.csv -cmap 'autumn' -out outfile.csv` will produce a .csv file outfile.csv with fields 'r,g,b', and records consisting rgb values e.g. '0.1,0.2,0.3' according to
+the [matplotlib colormap](https://matplotlib.org/stable/gallery/color/colormap_reference.html) 'autumn'.
+
+`./colortrack.py -in example_track.csv -cmap 'autumn'` will print the contents described above to std.out.
+
+`echo '1,2,3,4,5' | ./colortrack.py -cmap 'autumn'`
+`> r,g,b
+1.0,0.0,0.0
+1.0,0.2,0.0
+1.0,0.4,0.0
+1.0,0.6,0.0
+1.0,0.8,0.0
+1.0,1.0,0.0
+1.0,1.0,0.0`
+
+```
+### Requirements
+- matplotlib: `pip install matplotlib`
+- numpy: `pip install numpy`
