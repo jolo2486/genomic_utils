@@ -65,7 +65,7 @@ args = parser.parse_args()
 # read the csv rgbFile and convert it to a dict
 with open(args.rgbFile, 'r') as rgbf:
     reader = csv.DictReader(rgbf)
-    rgb_values = [{k: int(v) for k, v in row.items()} for row in reader]
+    rgb_values = [{k: float(v) for k, v in row.items()} for row in reader]
 # check wether .cmm file is XML
 with open(args.inFile, 'r') as f:
     try:
@@ -77,16 +77,16 @@ with open(args.inFile, 'r') as f:
 new_markers={}
 for i, line in enumerate(cmm_lines):
     if line.startswith('<marker id='):
-        index=int(re.search(r'<marker id="([^"]+)"', line).group(1))
-        rgb=rgb_values[index]
-        new_markers[index]=replace_rgb_values(line, rgb)
+        marker_id=int(re.search(r'<marker id="([^"]+)"', line).group(1))
+        # if there are more markers in the cmm file than in the rgbFile
+        # color the rest white
+        if marker_id < len(rgb_values):
+            rgb=rgb_values[marker_id]
+        else:
+            rbg = {'r':1.0, 'g': 1.0, 'b': 1.0}
+        new_markers[marker_id]=(i, replace_rgb_values(line, rgb))
 if not new_markers:
     warnings.warn('No new markers created! Did the .cmm contain any markers?')
-for i, line in enumerate(cmm_lines):
-    if line.startswith('<marker id='):
-        marker_id=int(re.search(r'<marker id="([^"]+)"', line).group(1))
-        rgb=rgb_values[marker_id]
-        new_markers[marker_id]=(i, replace_rgb_values(line, rgb))
 # update the lines from .cmm file with the new markers
 for marker_id in new_markers:
     cmm_lines[new_markers[marker_id][0]]=new_markers[marker_id][1]

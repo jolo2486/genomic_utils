@@ -50,6 +50,7 @@ args = parser.parse_args()
 groups = pd.read_csv(args.groupData)
 colors = pd.read_csv(args.colors)
 maxid = max([e for group in groups for e in groups[group]])
+# Initialize everything to white, i.e 1,1,1
 rgbvals = np.ones((maxid+1,3))
 for g in groups:
     for idx in groups[g]:

@@ -127,10 +127,12 @@ try:
 except KeyError as ke:
     print(f'Eigenvector {args.eigenvector} is not computed!', ke)
 else:
+    # nan < 0, nan > 0 both return False, hence the following should pick out all numbers.
     A_comp = [i for i, v in enumerate(pc) if v > 0]
     B_comp = [i for i, v in enumerate(pc) if v < 0]
     fields = ['A,B']
     records = [f'{a},{b}' for a, b in zip(A_comp, B_comp)]
+    print(f'Summary: Total bins: {len(clr.bins())}, length A: {len(A_comp)}, length B: {len(B_comp)}')
     if args.outFile:
         with open(args.outFile, 'w') as f:
             for line in fields + records:
