@@ -56,7 +56,7 @@ parser.add_argument(
     type=file_path,
     help="""
         Path and name of a .csv file with only three fields named r,g,b and
-        values where the row number corresponds with the marker id.
+        values where the row number corresponds with the marker id. Leave out to read from stdin.
         """,
     required=False
 )

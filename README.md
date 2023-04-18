@@ -20,7 +20,7 @@ optional arguments:
                         Path and name of the output file (optional).
   -rgb RGBFILE, --rgbFile RGBFILE
                         Path and name of a .csv file with only three fields named r,g,b and values where the row number
-                        corresponds with the marker id.
+                        corresponds with the marker id (optional). Leave out to read from stdin.
 ```
 
 ### Example Usage
@@ -86,7 +86,7 @@ will hence correspond to bin ids.
 optional arguments:
   -h, --help            show this help message and exit
   -g GROUPDATA, --groupData GROUPDATA
-                        Path to a csv file with the groups.
+                        Path to a csv file with the groups (optional). Leave out to read from stdin.
   -c COLORS, --colors COLORS
                         Path to the csv color file.
   -out OUTFILE, --outFile OUTFILE

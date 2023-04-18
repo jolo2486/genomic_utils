@@ -25,7 +25,7 @@ parser.add_argument(
     '-in',
     '--inFile',
     type=file_path,
-    help='Path to the csv format track to color by, e.g. GC or GPSeq score track. Exclude to read from stdin.',
+    help='Path to the csv format track to color by, e.g. GC or GPSeq score track. Leave out to read from stdin.',
     required=False
 )
 parser.add_argument(

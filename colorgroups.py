@@ -29,7 +29,7 @@ parser.add_argument(
     '-g',
     '--groupData',
     type=file_path,
-    help='Path to a csv file with the groups. Eclude to read from stdin.',
+    help='Path to a csv file with the groups. Leave out to read from stdin.',
     required= False
 )
 parser.add_argument(
