@@ -29,8 +29,8 @@ parser.add_argument(
     '-g',
     '--groupData',
     type=file_path,
-    help='Path to a csv file with the groups.',
-    required= True
+    help='Path to a csv file with the groups. Eclude to read from stdin.',
+    required= False
 )
 parser.add_argument(
     '-c',
@@ -47,7 +47,10 @@ parser.add_argument(
     required=False
 )
 args = parser.parse_args()
-groups = pd.read_csv(args.groupData)
+if args.groupData:
+    groups = pd.read_csv(args.groupData)
+else:
+    groups = pd.read_csv(os.sys.stdin)
 colors = pd.read_csv(args.colors)
 maxid = max([e for group in groups for e in groups[group]])
 # Initialize everything to white, i.e 1,1,1
