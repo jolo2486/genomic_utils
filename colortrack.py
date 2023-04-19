@@ -53,9 +53,11 @@ def vec2rgb(vec, cmap):
     norm = mcolors.Normalize(vmin=min(vec), vmax=max(vec))
     normalized_values = norm(vec)
     cmap = plt.get_cmap(cmap)
-    rgb_colors = np.array([cmap(value)[:3] for value in normalized_values])
+    rgb_colors = np.array(
+        [(1.0, 1.0, 1.0) if np.isnan(value)
+            else cmap(value)[:3] for value in normalized_values]
+    )
     return rgb_colors
-
 if args.inFile:
     track_vec = np.loadtxt(args.inFile, delimiter=',', dtype=float)
 else:
