@@ -50,7 +50,7 @@ args = parser.parse_args()
 
 def vec2rgb(vec, cmap):
     """Takes a vector, and a maplotlib cmap name and returns np.ndarray of rgb triplets."""
-    norm = mcolors.Normalize(vmin=min(vec), vmax=max(vec))
+    norm = mcolors.Normalize(vmin=np.nanmin(vec), vmax=np.nanmax(vec))
     normalized_values = norm(vec)
     cmap = plt.get_cmap(cmap)
     rgb_colors = np.array(
