@@ -1,5 +1,5 @@
 # genomic_utils
-Small but growing collection of utilities for various tasks related to computational genomics (nothing fancy).
+Small but growing collection of CLI tools for various tasks related to computational genomics (nothing fancy).
 
 # Scripts
 These are standalone Python3 scripts with their own respective requirements and usage. Just download the scripts of interest and use --help or read below for more info.
