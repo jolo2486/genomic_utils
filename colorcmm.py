@@ -91,6 +91,13 @@ for i, line in enumerate(cmm_lines):
         else:
             rgb = {'r':1.0, 'g': 1.0, 'b': 1.0}
             new_markers[marker_id]=(i, replace_rgb_values(line, rgb))
+    elif line.startswith('<link id'):
+        id1 = int(re.search(r'id1="(\d+)"', line).group(1))
+        id2 = int(re.search(r'id2="(\d+)"', line).group(1))
+        if set([id1, id2]).issubset(new_markers.keys()):
+            rgb = rgb_values[id1]
+            new_markers[f'l{i}'] = (i, replace_rgb_values(line, rgb)) 
+
 if not new_markers:
     warnings.warn('No new markers created! Did the .cmm contain any markers?')
 # update the lines from .cmm file with the new markers
@@ -104,4 +111,3 @@ if args.outFile:
 else:
     for line in cmm_lines:
         print(line, end='')
-
