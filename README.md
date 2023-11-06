@@ -143,7 +143,25 @@ r,g,b
 1.0,1.0,0.0
 ```
 
-```
 ### Requirements
 - matplotlib: `pip install matplotlib`
 - numpy: `pip install numpy`
+
+## chromlink_cmm
+```
+usage: chromlink_cmm [-h] -in INFILE -out [OUTFILE] [-rgb RGBFILE] -L LFILE
+
+Link chromosomes together in CMM files.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -in INFILE, --inFile INFILE
+                        Path to the Chimera .cmm file to be updated
+  -out [OUTFILE], --outFile [OUTFILE]
+                        Path to the output cmm file (optional).
+  -rgb RGBFILE, --rgbFile RGBFILE
+                        Path and name of a .csv file with only three fields named r,g,b and values where the row number corresponds to the chromosome
+                        number; no headers.
+  -L LFILE, --lFile LFILE
+                        Path to the L-file with chromosome label per bin, i.e. L=[1,1,1,...,24]
+```
